@@ -11,7 +11,7 @@ namespace Pepperbot.Services
         {
             var connStr = configuration["mongoDB"] ?? throw new ArgumentNullException($"MongoDB connection info missing");
             
-            client = new MongoClient(connStr);
+            client = new MongoClient(connStr, { useNewUrlParser: true, useUnifiedTopology: true });
         }
 
         public async Task<long> GetLinkCount()
