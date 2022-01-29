@@ -1,0 +1,10 @@
+﻿head, body {
+    background-color: #3A3C41;
+}
+
+.gr {
+    color: transparent;
+    background-image: linear-gradient(90deg,#FFA100, #C5220F);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
