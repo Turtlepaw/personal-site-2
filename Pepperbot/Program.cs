@@ -25,5 +25,4 @@ builder.Services.AddScoped<ContextMenuService>();
 //});
 
 var app = builder.Build();
-
 await app.RunAsync();
