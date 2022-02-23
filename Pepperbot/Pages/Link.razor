@@ -1,6 +1,8 @@
 ﻿@page "/r/{Linkname}"
-@inject MongoService MongoDB
+@using Pepperbot.Data
+@using System.Text.Json
 @inject NavigationManager NavigationManager    
+@inject HttpClient HttpClient
 
 @code {
     [Parameter]
@@ -8,7 +10,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var newUrl = await MongoDB.GetDoc(Linkname);
-        NavigationManager.NavigateTo($"{newUrl}");
+
+        var link = await JsonSerializer.DeserializeAsync<LinkData>(await HttpClient.GetStreamAsync($"https://api.trtle.xyz:7879/r/getLink?Name={Linkname}"));
+        NavigationManager.NavigateTo($"{link.URL}");
+
     }
 }
