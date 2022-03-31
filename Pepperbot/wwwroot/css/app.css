@@ -36,6 +36,12 @@ a, .btn-link {
     font-size: 14px;
     font-weight: 400;
 }
+
+.BrandLogo {
+    width: 75px;
+    display: inline
+}
+
 .text-font {
     color: black;
 }
