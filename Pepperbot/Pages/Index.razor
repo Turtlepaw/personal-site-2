@@ -1,5 +1,7 @@
 ﻿@page "/"
 @page "/index.html"
+@using System.Text.Json
+@using System.Text.Json.Serialization;
 
 <div class="mt-10 text-white text-center pb-12">
     <div>
@@ -51,5 +53,26 @@
                 <br />
             </center>
         </div>
+        <img src="discordstatus.svg" style="width: 75px; display: inline; margin-bottom: 35px; margin-right: 20px; margin-left: 20px;" /> <span class="text-6xl font-bold grTitle">Status</span>
+        <br /><br />
+        <div>
+            <a href="https://discord.com/users/820465204411236362">
+                <center><img src="https://lanyard.cnrad.dev/api/820465204411236362"/></center>
+            </a>
+        </div>
     </div>
 </div>
+
+@code {
+    public Object res { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, "https://api.lanyard.rest/v1/users/820465204411236362");
+        request.Headers.Add("Accept", "application/json");
+
+        var client = new HttpClient();
+
+        res = await client.SendAsync(request);
+    }
+}
